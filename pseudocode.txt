@@ -1,9 +1,0 @@
-// izbor kompijutera 
-// izbor igraca 
-//funkcija igre  if rock and rock || sissors and sissors || paper and paper { tie }
-                    else if rock and sissors {win player}
-                    else if rock and paper {lose player}
-                    else if paper and rock {win player }
-                    else if paper and sissors { lose player}
-                    else if sissors and paper { win player}
-                    else if sissors and rock {lose player}

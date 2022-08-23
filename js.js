@@ -1,33 +1,47 @@
-function getComputerChoice() {
-  choiceArr = ['Rock', 'Paper', 'Sissors'];
-  return (newArr = choiceArr[Math.floor(Math.random() * choiceArr.length)]);
-}
-
-const playerSelection = prompt(' Rock , Paper or Sissors?');
-const computerSelection = getComputerChoice();
 let playerScore = 0;
 let computerScore = 0;
+let result = '';
 
-function playRound() {
+function getComputerChoice() {
+  choiceArr = ['Rock', 'Paper', 'Scissors'];
+  return (newArr = choiceArr[Math.floor(Math.random() * choiceArr.length)]);
+}
+function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return 'tie';
+    return (result = 'tie');
   } else if (
-    (playerSelection == 'Rock' && computerSelection == 'Sissors') ||
+    (playerSelection == 'Rock' && computerSelection == 'Scissors') ||
     (playerSelection == 'Paper' && computerSelection == 'Rock') ||
-    (playerSelection == 'Sissors' && computerSelection == 'Paper')
+    (playerSelection == 'Scissors' && computerSelection == 'Paper')
   ) {
-    return playerScore++, 'player wins';
+    return (result = 'player wins');
   } else {
-    return computerScore++, 'computer wins';
+    return (result = 'computer wins');
   }
 }
-playRound();
-console.log(playerSelection);
-console.log(playerScore);
-console.log(computerSelection);
-console.log(computerScore);
-console.log(playRound());
-
 function game() {
-  
+  let playerScore = 0;
+  let computerScore = 0;
+  let playerSelection, computerSelection, result;
+  for (let i = 0; i < 5; i++) {
+    playerSelection = prompt();
+    computerSelection = getComputerChoice();
+    console.log(
+      `User selection ${playerSelection},Computer selection ${computerSelection}`
+    );
+    result = playRound(playerSelection, computerSelection);
+    if (result === 'player wins') {
+      playerScore++;
+    } else if (result === 'computer wins') {
+      computerScore++;
+    }
+    console.log(`Score : Player${playerScore} and Computer${computerScore}`);
+  }
+  if (playerScore > computerScore) {
+    return 'Player has won best of 5';
+  } else {
+    return 'Computer has won best of 5';
+  }
 }
+
+console.log(game());
